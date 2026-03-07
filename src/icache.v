@@ -20,6 +20,8 @@
 
 `default_nettype none
 
+/* verilator lint_off WIDTHTRUNC */
+/* verilator lint_off WIDTHEXPAND */
 module icache #(
     parameter integer NUM_SETS   = 256,
     parameter integer LINE_BYTES = 4,
@@ -189,5 +191,7 @@ module icache #(
   end
 
 endmodule
+/* verilator lint_on WIDTHTRUNC */
+/* verilator lint_on WIDTHEXPAND */
 `default_nettype wire
 

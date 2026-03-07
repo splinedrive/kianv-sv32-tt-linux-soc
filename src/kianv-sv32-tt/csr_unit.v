@@ -20,7 +20,9 @@
 
 `default_nettype none
 `include "riscv_defines.vh"
-
+/* verilator lint_off WIDTHTRUNC */
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off UNUSEDSIGNAL */
 module csr_unit (
     input  wire                      clk,
     input  wire                      resetn,
@@ -479,3 +481,6 @@ module csr_unit (
   end
 
 endmodule
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on WIDTHTRUNC */
+/* verilator lint_on UNUSEDSIGNAL */

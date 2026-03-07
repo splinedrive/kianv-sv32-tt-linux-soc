@@ -21,11 +21,15 @@
 `default_nettype none
 `include "riscv_defines.vh"
 
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off WIDTHTRUNC */
 module sv32_table_walk #(
     parameter NUM_ENTRIES_ITLB = 64,
     parameter NUM_ENTRIES_DTLB = 64,
+    /* verilator lint_off UNUSEDPARAM */
     parameter ITLB_WAYS        = 4,
     parameter DTLB_WAYS        = 4
+    /* verilator lint_on UNUSEDPARAM */
 ) (
     input  wire        clk,
     input  wire        resetn,
@@ -288,3 +292,5 @@ module sv32_table_walk #(
   end
 endmodule
 `default_nettype wire
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on WIDTHTRUNC */

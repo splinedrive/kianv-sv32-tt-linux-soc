@@ -19,6 +19,10 @@
  */
 
 `default_nettype none
+/* verilator lint_off WIDTHTRUNC */
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off UNDRIVEN */
+/* verilator lint_off UNUSEDSIGNAL */
 module sram_sp_256x56 #(
     parameter ASIC = 0
 ) (
@@ -32,6 +36,7 @@ module sram_sp_256x56 #(
 
   wire [55:0] dout_asic;
   wire [55:0] dout_fpga;
+
   assign dout = (ASIC != 0) ? dout_asic : dout_fpga;
 
   generate
@@ -80,5 +85,8 @@ module sram_sp_256x56 #(
   endgenerate
 
 endmodule
+/* verilator lint_on WIDTHTRUNC */
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on UNDRIVEN */
+/* verilator lint_on UNUSEDSIGNAL */
 `default_nettype wire
-

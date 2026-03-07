@@ -19,7 +19,7 @@
  */
 
 `default_nettype none
-
+/* verilator lint_off UNUSEDSIGNAL */
 module tt_um_kianv_sv32_soc (
     input  wire [7:0] ui_in,
     output wire [7:0] uo_out,
@@ -135,5 +135,6 @@ module tt_um_kianv_sv32_soc (
   wire _unused = &{1'b0, reserved0, reserved3, reserved4, reserved5, reserved6, ena, gpio_oe};
 
 endmodule
+/* verilator lint_on UNUSEDSIGNAL */
 
 `default_nettype wire

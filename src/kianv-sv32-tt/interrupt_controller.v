@@ -20,7 +20,8 @@
 
 `default_nettype none
 `include "riscv_defines.vh"
-
+/* verilator lint_off WIDTHTRUNC */
+/* verilator lint_off WIDTHEXPAND */
 module interrupt_controller (
     input wire clk,
     input wire resetn,
@@ -138,3 +139,5 @@ module interrupt_controller (
   end
 
 endmodule
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on WIDTHTRUNC */

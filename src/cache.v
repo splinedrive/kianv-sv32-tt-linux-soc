@@ -50,6 +50,7 @@ module cache #(
       localparam S_REQ = 2'd1;
       localparam S_RSP = 2'd2;
 
+      wire _unused = &{1'b0, iflush, is_instruction};
       reg [1:0] state_q;
 
       reg [31:0] addr_q;
@@ -95,7 +96,7 @@ module cache #(
         endcase
       end
 
-      always @(posedge clk or negedge resetn) begin
+      always @(posedge clk) begin
         if (!resetn) begin
           state_q <= S_IDLE;
           addr_q  <= 32'b0;

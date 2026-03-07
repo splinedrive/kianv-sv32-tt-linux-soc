@@ -21,6 +21,10 @@
 `default_nettype none
 `include "defines_soc.vh"
 
+/* verilator lint_off PINCONNECTEMPTY */
+/* verilator lint_off WIDTHTRUNC */
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off UNUSEDSIGNAL */
 module soc #(
 `ifdef SIM
     parameter integer SIM_MEM_LATENCY = 8
@@ -164,7 +168,7 @@ module soc #(
       .END_ADDR     (`SPI_NOR_MEM_ADDR_END),
       .NOR_CS_IDX   (2),
 `ifdef SIM
-      .SCLK_DIV    (1),
+      .SCLK_DIV     (1),
 `endif
       .CPOL_INIT    (4'b0000),
       .DIV_MAP      (4'b1110)
@@ -1235,3 +1239,7 @@ module spi_nor_spi_if #(
 endmodule
 
 `default_nettype wire
+/* verilator lint_on PINCONNECTEMPTY */
+/* verilator lint_on WIDTHTRUNC */
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on UNUSEDSIGNAL */

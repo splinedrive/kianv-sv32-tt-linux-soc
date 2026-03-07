@@ -19,6 +19,7 @@
  */
 
 `default_nettype none
+/* verilator lint_off UNUSEDSIGNAL */
 module icache_sram #(
     parameter integer NUM_LINES = 256,
     parameter integer LINE_BYTES = 4,
@@ -83,3 +84,4 @@ module icache_sram #(
   end
 endmodule
 `default_nettype wire
+/* verilator lint_on UNUSEDSIGNAL */

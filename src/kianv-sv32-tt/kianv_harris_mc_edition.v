@@ -21,6 +21,8 @@
 `default_nettype none
 
 `include "riscv_defines.vh"
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off WIDTHTRUNC */
 module kianv_harris_mc_edition #(
     parameter RESET_ADDR = 0,
     parameter NUM_ENTRIES_ITLB = 64,
@@ -134,8 +136,6 @@ module kianv_harris_mc_edition #(
   wire [31:0] cpu_mem_wdata;
   wire [31:0] cpu_mem_rdata;
   wire [31:0] sv32_fault_address;
-
-  wire [ 1:0] addr_align_bits;
 
   wire        stall;
 
@@ -336,3 +336,5 @@ module kianv_harris_mc_edition #(
   );
 
 endmodule
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on WIDTHTRUNC */

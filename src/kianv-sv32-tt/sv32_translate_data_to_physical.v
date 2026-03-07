@@ -21,6 +21,8 @@
 `default_nettype none
 `include "riscv_defines.vh"
 
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off WIDTHTRUNC */
 module sv32_translate_data_to_physical (
     input  wire        clk,
     input  wire        resetn,
@@ -160,5 +162,7 @@ module sv32_translate_data_to_physical (
 
   end
 endmodule
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on WIDTHTRUNC */
 
 `default_nettype wire

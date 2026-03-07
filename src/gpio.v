@@ -19,6 +19,7 @@
  */
 
 `default_nettype none
+/* verilator lint_off UNUSEDSIGNAL */
 module gpio (
     input  wire        clk,
     input  wire        resetn,
@@ -71,4 +72,5 @@ module gpio (
   end
 
 endmodule
+/* verilator lint_on UNUSEDSIGNAL */
 

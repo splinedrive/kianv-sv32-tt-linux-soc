@@ -19,6 +19,7 @@
  */
 
 `default_nettype none
+/* verilator lint_off UNUSEDSIGNAL */
 module spi #(
     parameter [3:0] CPOL_INIT = 4'b0000
 ) (
@@ -131,3 +132,4 @@ module spi #(
   end
 endmodule
 `default_nettype wire
+/* verilator lint_on UNUSEDSIGNAL */

@@ -22,6 +22,8 @@
 
 `include "riscv_defines.vh"
 
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off WIDTHTRUNC */
 module alu_decoder (
     input  wire                        imm_bit10,
     input  wire                        op_bit5,
@@ -91,3 +93,5 @@ module alu_decoder (
   end
 
 endmodule
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on WIDTHTRUNC */

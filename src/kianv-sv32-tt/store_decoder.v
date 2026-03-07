@@ -21,6 +21,7 @@
 `default_nettype none
 `include "riscv_defines.vh"
 
+/* verilator lint_off UNUSEDSIGNAL */
 module store_decoder (
     input wire [2:0] funct3,
     input wire amo_operation_store,
@@ -54,4 +55,4 @@ module store_decoder (
     end
   end
 endmodule
-
+/* verilator lint_on UNUSEDSIGNAL */

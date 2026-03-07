@@ -21,6 +21,7 @@
 `default_nettype none
 `include "riscv_defines.vh"
 
+/* verilator lint_off UNUSEDSIGNAL */
 module main_fsm (
     input  wire                        clk,
     input  wire                        resetn,
@@ -103,7 +104,10 @@ module main_fsm (
              branch  = 7'b110_0011,
              lui     = 7'b011_0111,
              auipc   = 7'b001_0111,
+/* verilator lint_off UNUSEDPARAM */
              amo     = 7'b010_1111;
+/* verilator lint_on UNUSEDPARAM */
+
 
   localparam [5:0]
 
@@ -1018,3 +1022,4 @@ module main_fsm (
   end
 
 endmodule
+/* verilator lint_on UNUSEDSIGNAL */

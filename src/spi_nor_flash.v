@@ -18,6 +18,9 @@
  * limitations under the License.
  */
 
+/* verilator lint_off WIDTHEXPAND */
+/* verilator lint_off WIDTHTRUNC */
+/* verilator lint_off UNUSEDSIGNAL */
 `default_nettype none
 module spi_nor_flash #(
 
@@ -211,4 +214,7 @@ module spi_nor_flash #(
     end
   end
 endmodule
+/* verilator lint_on WIDTHEXPAND */
+/* verilator lint_on WIDTHTRUNC */
+/* verilator lint_on UNUSEDSIGNAL */
 `default_nettype wire

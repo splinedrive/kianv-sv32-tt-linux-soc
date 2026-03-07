@@ -19,6 +19,7 @@
  */
 
 `default_nettype none
+/* verilator lint_off UNUSEDSIGNAL */
 module kianv_smem #(
     parameter integer CHIP_SELECTS = 2,
     parameter         ASIC         = 0
@@ -311,4 +312,5 @@ module align_wdata (
     endcase
   end
 endmodule
+/* verilator lint_on UNUSEDSIGNAL */
 `default_nettype wire

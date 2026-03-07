@@ -19,7 +19,8 @@
  */
 
 `default_nettype none
-
+/* verilator lint_off WIDTHTRUNC */
+/* verilator lint_off WIDTHEXPAND */
 module dcache #(
 
     parameter integer NUM_LINES  = 256,
@@ -331,4 +332,6 @@ module dcache #(
 `endif
 
 endmodule
+/* verilator lint_on WIDTHTRUNC */
+/* verilator lint_on WIDTHEXPAND */
 `default_nettype wire

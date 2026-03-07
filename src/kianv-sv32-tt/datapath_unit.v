@@ -21,6 +21,7 @@
 `default_nettype none
 
 `include "riscv_defines.vh"
+/* verilator lint_off UNUSEDSIGNAL */
 module datapath_unit #(
     parameter RESET_ADDR = 0
 ) (
@@ -455,5 +456,5 @@ module datapath_unit #(
       .IRQ_TO_CPU_CTRL9 (IRQ_TO_CPU_CTRL9),
       .IRQ_TO_CPU_CTRL11(IRQ_TO_CPU_CTRL11)
   );
-
 endmodule
+/* verilator lint_on UNUSEDSIGNAL */
