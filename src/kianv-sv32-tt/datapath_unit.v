@@ -273,17 +273,8 @@ module datapath_unit #(
       mem_addr_align_latch
   );
 
-  dlatch_kianV #(32) A1_I (
-      clk,
-      Rd1,
-      A1
-  );
-
-  dlatch_kianV #(32) A2_I (
-      clk,
-      Rd2,
-      A2
-  );
+  assign A1 = Rd1;
+  assign A2 = Rd2;
 
   dlatch_kianV #(32) Data_I (
       clk,

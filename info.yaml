@@ -57,6 +57,7 @@ project:
     - "spi_nor_flash.v"
     - "sram_sp_256x56.v"
     - "RM_IHPSG13_1P_256x64_c2_bm_bist.v"
+    - "RM_IHPSG13_2P_64x32_c2.v"
     - "tt_um_kianv_sv32_soc.v"
     - "tx_uart.v"
 

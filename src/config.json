@@ -36,41 +36,54 @@
 
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
-  "//": "SRAM macro integration: use RM_IHPSG13_1P_256x64_c2_bm_bist for both icache + dcache",
+  "//": "SRAM macro integration: use RM_IHPSG13_2P_64x32_c2 for register file",
   "MACROS": {
-    "RM_IHPSG13_1P_256x64_c2_bm_bist": {
+    "RM_IHPSG13_2P_64x32_c2": {
       "instances": {
-        "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64": {
+        "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1": {
           "location": [40, 40],
-          "orientation": "N"
-        },
-        "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [40, 210],
           "orientation": "N"
         }
       },
-      "gds": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"],
-      "lef": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"],
+      "gds": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2.gds"],
+      "lef": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2.lef"],
       "lib": {
-        "nom_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"],
-        "min_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"],
-        "max_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"],
-        "*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"]
+        "nom_*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_typ_1p20V_25C.lib"],
+        "min_*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_fast_1p32V_m55C.lib"],
+        "max_*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_slow_1p08V_125C.lib"],
+        "*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_typ_1p20V_25C.lib"]
       },
-      "nl": ["dir::./RM_IHPSG13_1P_256x64_c2_bm_bist.v"],
-      "spice": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.cdl"]
+      "nl": ["dir::./RM_IHPSG13_2P_64x32_c2.v"],
+      "spice": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2.cdl"]
     }
   },
 
   "PDN_MACRO_CONNECTIONS": [
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
+    "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1 VPWR VGND VDD! VSS!",
+    "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1 VPWR VGND VDDARRAY! VSS!"
   ],
-  
+
   "//": "Custom PDN config: SRAM power pins on Metal4, connect Metal4 -> TopMetal1",
   "PDN_CFG": "dir::pdn_cfg.tcl",
+
+  "//": "Routing obstructions over regfile SRAM footprint",
+  "ROUTING_OBSTRUCTIONS": [
+    "Metal3 40.00 39.40 742.83 40.00",
+    "Metal3 40.00 114.87 742.83 115.47",
+    "Metal3 39.40 40.00 40.00 114.87",
+    "Metal3 742.83 40.00 743.43 114.87",
+    "Metal2 40.00 114.87 742.83 115.47",
+    "Metal2 39.40 40.00 40.00 114.87",
+    "Metal2 742.83 40.00 743.43 114.87",
+    "Metal4 40.00 40.00 742.83 114.87",
+    "Metal5 40.00 40.00 742.83 114.87",
+    "TopMetal1 40.00 40.00 742.83 114.87"
+  ],
+
+  "MAGIC_MACRO_STD_CELL_SOURCE": "PDK",
+  "MAGIC_EXT_ABSTRACT_CELLS": [
+    "RM_IHPSG13_2P_.*"
+  ],
 
   "//": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
   "//": "!!! DO NOT CHANGE ANYTHING BELOW THIS POINT !!!",
