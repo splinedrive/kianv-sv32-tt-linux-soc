@@ -31,7 +31,46 @@
   "//": "https://tinytapeout.com/faq/#how-can-i-map-an-additional-external-clock-to-one-of-the-gpios",
   "CLOCK_PORT": "clk",
 
+  "//": "Verilog include path for kianv-sv32-tt subdirectory",
+  "VERILOG_INCLUDE_DIRS": "dir::kianv-sv32-tt",
+
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
+
+  "//": "SRAM macro integration: use RM_IHPSG13_1P_256x64_c2_bm_bist for both icache + dcache",
+  "MACROS": {
+    "RM_IHPSG13_1P_256x64_c2_bm_bist": {
+      "instances": {
+        "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [40, 40],
+          "orientation": "N"
+        },
+        "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [40, 210],
+          "orientation": "N"
+        }
+      },
+      "gds": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"],
+      "lef": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"],
+      "lib": {
+        "nom_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"],
+        "min_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"],
+        "max_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"],
+        "*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"]
+      },
+      "nl": ["dir::./RM_IHPSG13_1P_256x64_c2_bm_bist.v"],
+      "spice": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.cdl"]
+    }
+  },
+
+  "PDN_MACRO_CONNECTIONS": [
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
+  ],
+  
+  "//": "Custom PDN config: SRAM power pins on Metal4, connect Metal4 -> TopMetal1",
+  "PDN_CFG": "dir::pdn_cfg.tcl",
 
   "//": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
   "//": "!!! DO NOT CHANGE ANYTHING BELOW THIS POINT !!!",
