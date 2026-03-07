@@ -45,14 +45,96 @@ module cache #(
 );
   generate
     if (BYPASS_CACHES) begin : gen_bypass
-      always @(*) begin
-        cache_addr_o  = cpu_addr_i;
-        cache_din_o   = cpu_din_i;
-        cache_wmask_o = cpu_wmask_i;
-        cache_valid_o = cpu_valid_i;
-        cpu_ready_o   = cache_ready_i;
-        cpu_dout_o    = cache_dout_i;
+
+      localparam S_IDLE = 2'd0;
+      localparam S_REQ = 2'd1;
+      localparam S_RSP = 2'd2;
+
+      reg [1:0] state_q;
+
+      reg [31:0] addr_q;
+      reg [31:0] din_q;
+      reg [3:0] wmask_q;
+
+      reg [31:0] rdata_q;
+
+      wire is_write = (wmask_q != 4'b0000);
+
+      always @* begin
+        cache_addr_o  = 32'b0;
+        cache_din_o   = 32'b0;
+        cache_wmask_o = 4'b0;
+        cache_valid_o = 1'b0;
+
+        cpu_ready_o   = 1'b0;
+        cpu_dout_o    = rdata_q;
+
+        case (state_q)
+          S_IDLE: begin
+
+          end
+
+          S_REQ: begin
+            cache_addr_o  = addr_q;
+            cache_din_o   = din_q;
+            cache_wmask_o = wmask_q;
+            cache_valid_o = 1'b1;
+
+            if (cache_ready_i && is_write) begin
+              cpu_ready_o = 1'b1;
+            end
+          end
+
+          S_RSP: begin
+            cpu_ready_o = 1'b1;
+            cpu_dout_o  = rdata_q;
+          end
+
+          default: begin
+          end
+        endcase
       end
+
+      always @(posedge clk or negedge resetn) begin
+        if (!resetn) begin
+          state_q <= S_IDLE;
+          addr_q  <= 32'b0;
+          din_q   <= 32'b0;
+          wmask_q <= 4'b0;
+          rdata_q <= 32'b0;
+        end else begin
+          case (state_q)
+            S_IDLE: begin
+              if (cpu_valid_i) begin
+                addr_q  <= cpu_addr_i;
+                din_q   <= cpu_din_i;
+                wmask_q <= cpu_wmask_i;
+                state_q <= S_REQ;
+              end
+            end
+
+            S_REQ: begin
+              if (cache_ready_i) begin
+                if (is_write) begin
+                  state_q <= S_IDLE;
+                end else begin
+                  rdata_q <= cache_dout_i;
+                  state_q <= S_RSP;
+                end
+              end
+            end
+
+            S_RSP: begin
+              state_q <= S_IDLE;
+            end
+
+            default: begin
+              state_q <= S_IDLE;
+            end
+          endcase
+        end
+      end
+
     end else begin : gen_cached
 
       wire [31:0] ic_cpu_dout_o;
