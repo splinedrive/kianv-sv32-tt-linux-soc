@@ -18,6 +18,8 @@ jobs:
         with:
           pdk: ihp-sg13g2
           librelane-version: 3.0.0.dev44
+          tools-repo: urish/tt-support-tools
+          tools-ref: ihp-8x4
 
   precheck:
     needs: gds
