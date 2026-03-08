@@ -40,7 +40,7 @@
   "MACROS": {
     "RM_IHPSG13_2P_64x32_c2": {
       "instances": {
-        "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1": {
+        "soc_I.kianv_I.datapath_unit_I.register_file_I.g_asic.u_sram_rd1": {
           "location": [40, 40],
           "orientation": "N"
         }
@@ -81,8 +81,8 @@
   },
 
   "PDN_MACRO_CONNECTIONS": [
-    "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1 VPWR VGND VDD! VSS!",
-    "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1 VPWR VGND VDDARRAY! VSS!",
+    "soc_I.kianv_I.datapath_unit_I.register_file_I.g_asic.u_sram_rd1 VPWR VGND VDD! VSS!",
+    "soc_I.kianv_I.datapath_unit_I.register_file_I.g_asic.u_sram_rd1 VPWR VGND VDDARRAY! VSS!",
     "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
     "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
     "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",

@@ -23,7 +23,8 @@
 `include "riscv_defines.vh"
 /* verilator lint_off UNUSEDSIGNAL */
 module datapath_unit #(
-    parameter RESET_ADDR = 0
+    parameter RESET_ADDR = 0,
+    parameter ASIC = 0
 ) (
     input wire clk,
     input wire resetn,
@@ -114,7 +115,9 @@ module datapath_unit #(
 
   wire [31:0] WD3;
 
-  register_file register_file_I (
+  register_file #(
+      .ASIC(ASIC)
+  ) register_file_I (
       .clk(clk),
       .we (RegWrite),
       .A1 (Rs1),

@@ -26,7 +26,8 @@
 module kianv_harris_mc_edition #(
     parameter RESET_ADDR = 0,
     parameter NUM_ENTRIES_ITLB = 64,
-    parameter NUM_ENTRIES_DTLB = 64
+    parameter NUM_ENTRIES_DTLB = 64,
+    parameter ASIC = 0
 ) (
     input  wire        clk,
     input  wire        resetn,
@@ -225,7 +226,8 @@ module kianv_harris_mc_edition #(
   );
 
   datapath_unit #(
-      .RESET_ADDR(RESET_ADDR)
+      .RESET_ADDR(RESET_ADDR),
+      .ASIC(ASIC)
   ) datapath_unit_I (
       .clk            (clk),
       .resetn         (resetn),

@@ -488,7 +488,8 @@ module soc #(
   kianv_harris_mc_edition #(
       .RESET_ADDR      (`RESET_ADDR),
       .NUM_ENTRIES_ITLB(`NUM_ENTRIES_ITLB),
-      .NUM_ENTRIES_DTLB(`NUM_ENTRIES_DTLB)
+      .NUM_ENTRIES_DTLB(`NUM_ENTRIES_DTLB),
+      .ASIC        (`ASIC)
   ) kianv_I (
       .clk            (clk),
       .resetn         (resetn_soc),

@@ -39,7 +39,7 @@ module dcache #(
     parameter         ASIC          = 0,
     parameter         DEBUG         = 0,
     parameter         STATS_ONLY    = 1,
-    parameter integer STATS_DUMP_AT = 500
+    parameter integer STATS_DUMP_AT = 1000
 ) (
     input wire clk,
     input wire resetn,

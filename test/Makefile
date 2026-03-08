@@ -9,7 +9,9 @@ SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = \
 	RM_IHPSG13_1P_256x64_c2_bm_bist.v \
 	RM_IHPSG13_1P_64x64_c2_bm_bist.v \
-  RM_IHPSG13_1P_core_behavioral_bm_bist.v \
+  RM_IHPSG13_1P_core_behavioral.v \
+	RM_IHPSG13_2P_64x32_c2.v \
+	RM_IHPSG13_2P_core_behavioral_ideal.v \
 	cache.v \
 	clint.v \
 	dcache.v \
