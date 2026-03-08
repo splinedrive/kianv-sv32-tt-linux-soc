@@ -23,6 +23,7 @@
 /* verilator lint_off WIDTHEXPAND */
 /* verilator lint_off UNDRIVEN */
 /* verilator lint_off UNUSEDSIGNAL */
+
 module sram_sp_64x56 #(
     parameter ASIC = 0
 ) (
@@ -41,15 +42,14 @@ module sram_sp_64x56 #(
 
   generate
     if (ASIC != 0) begin : gen_ihp_sg13
-      wire        a_men = 1'b1;
+      wire        a_men = we | re;
       wire        a_wen = we;
       wire        a_ren = re & ~we;
       wire [ 5:0] a_addr = addr;
       wire [63:0] a_din = {8'h00, din};
-      wire [ 7:0] a_bm = we ? 8'hFF : 8'h00;
+      wire [63:0] a_bm = 64'h00FF_FFFF_FFFF_FFFF;
       wire [63:0] a_dout;
 
-      (* keep *)
       RM_IHPSG13_1P_64x64_c2_bm_bist u_sram64 (
           .A_CLK      (clk),
           .A_MEN      (a_men),
@@ -60,14 +60,14 @@ module sram_sp_64x56 #(
           .A_DLY      (1'b1),
           .A_DOUT     (a_dout),
           .A_BM       (a_bm),
-          .A_BIST_CLK (clk),
+          .A_BIST_CLK (1'b0),
           .A_BIST_EN  (1'b0),
           .A_BIST_MEN (1'b0),
           .A_BIST_WEN (1'b0),
           .A_BIST_REN (1'b0),
-          .A_BIST_ADDR({6{1'b0}}),
-          .A_BIST_DIN ({64{1'b0}}),
-          .A_BIST_BM  ({8{1'b0}})
+          .A_BIST_ADDR(6'b0),
+          .A_BIST_DIN (64'b0),
+          .A_BIST_BM  (64'b0)
       );
 
       assign dout_asic = a_dout[55:0];
@@ -75,6 +75,7 @@ module sram_sp_64x56 #(
     end else begin : gen_fpga
       (* ram_style = "block" *) reg [55:0] mem[0:63];
       reg [55:0] dout_r;
+
       assign dout_fpga = dout_r;
 
       always @(posedge clk) begin
@@ -85,6 +86,7 @@ module sram_sp_64x56 #(
   endgenerate
 
 endmodule
+
 /* verilator lint_on WIDTHTRUNC */
 /* verilator lint_on WIDTHEXPAND */
 /* verilator lint_on UNDRIVEN */

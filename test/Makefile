@@ -8,6 +8,7 @@ TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = \
 	RM_IHPSG13_1P_256x64_c2_bm_bist.v \
+	RM_IHPSG13_1P_64x64_c2_bm_bist.v \
   RM_IHPSG13_1P_core_behavioral_bm_bist.v \
 	cache.v \
 	clint.v \
@@ -24,6 +25,7 @@ PROJECT_SOURCES = \
 	spi.v \
 	spi_nor_flash.v \
 	sram_sp_256x56.v \
+	sram_sp_64x56.v \
 	tt_um_kianv_sv32_soc.v \
 	tx_uart.v \
 	kianv-sv32-tt/alu.v \
