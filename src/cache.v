@@ -22,6 +22,7 @@
 
 module cache #(
     parameter BYPASS_CACHES = 0,
+    parameter NUM_SETS = 256,
     parameter ASIC = 0
 ) (
     input wire clk,
@@ -154,6 +155,7 @@ module cache #(
       wire        shared_ram_ready_i = cache_ready_i;
 
       icache #(
+          .NUM_SETS(NUM_SETS),
           .ASIC(ASIC)
       ) icache_I (
           .clk   (clk),
@@ -172,6 +174,7 @@ module cache #(
       );
 
       dcache #(
+          .NUM_LINES(NUM_SETS),
           .ASIC(ASIC)
       ) dcache_I (
           .clk   (clk),

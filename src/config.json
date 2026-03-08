@@ -13,7 +13,7 @@
 
   "//": "PL_TARGET_DENSITY_PCT - You can increase this if Global Placement fails with error GPL-0302.",
   "//": "Users have reported that values up to 80 worked well for them.",
-  "PL_TARGET_DENSITY_PCT": 60,
+  "PL_TARGET_DENSITY_PCT": 50,
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
   "//": "The value is in nanoseconds, so 20ns == 50MHz.",
@@ -36,41 +36,106 @@
 
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
-  "//": "SRAM macro integration: use RM_IHPSG13_1P_256x64_c2_bm_bist for both icache + dcache",
+  "//": "SRAM macro integration: regfile (2P_64x32) + icache/dcache (1P_64x64)",
   "MACROS": {
-    "RM_IHPSG13_1P_256x64_c2_bm_bist": {
+    "RM_IHPSG13_2P_64x32_c2": {
       "instances": {
-        "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64": {
+        "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1": {
           "location": [40, 40],
-          "orientation": "N"
-        },
-        "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [40, 210],
           "orientation": "N"
         }
       },
-      "gds": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"],
-      "lef": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"],
+      "gds": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2.gds"],
+      "lef": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2.lef"],
       "lib": {
-        "nom_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"],
-        "min_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"],
-        "max_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"],
-        "*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"]
+        "nom_*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_typ_1p20V_25C.lib"],
+        "min_*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_fast_1p32V_m55C.lib"],
+        "max_*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_slow_1p08V_125C.lib"],
+        "*": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2_typ_1p20V_25C.lib"]
       },
-      "nl": ["dir::./RM_IHPSG13_1P_256x64_c2_bm_bist.v"],
-      "spice": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.cdl"]
+      "nl": ["dir::./RM_IHPSG13_2P_64x32_c2.v"],
+      "spice": ["dir::../macro/RM_IHPSG13_2P_64x32_c2/RM_IHPSG13_2P_64x32_c2.cdl"]
+    },
+    "RM_IHPSG13_1P_64x64_c2_bm_bist": {
+      "instances": {
+        "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [860, 40],
+          "orientation": "N"
+        },
+        "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [40, 600],
+          "orientation": "N"
+        }
+      },
+      "gds": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist.gds"],
+      "lef": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist.lef"],
+      "lib": {
+        "nom_*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_typ_1p20V_25C.lib"],
+        "min_*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_fast_1p32V_m55C.lib"],
+        "max_*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_slow_1p08V_125C.lib"],
+        "*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_typ_1p20V_25C.lib"]
+      },
+      "nl": ["dir::./RM_IHPSG13_1P_64x64_c2_bm_bist.v"],
+      "spice": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist.cdl"]
     }
   },
 
   "PDN_MACRO_CONNECTIONS": [
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
+    "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1 VPWR VGND VDD! VSS!",
+    "soc_I.kianv_I.datapath_unit_I.register_file_I.u_sram_rd1 VPWR VGND VDDARRAY! VSS!",
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
   ],
-  
+
   "//": "Custom PDN config: SRAM power pins on Metal4, connect Metal4 -> TopMetal1",
   "PDN_CFG": "dir::pdn_cfg.tcl",
+
+  "//": "Routing obstructions over SRAM footprints",
+  "//": "Regfile 2P_64x32: 702.83 x 74.87 µm at [40,40]",
+  "//": "Cache 1P_64x64: 784.48 x 64.36 µm at [860,40] and [40,600]",
+  "ROUTING_OBSTRUCTIONS": [
+    "Metal3 40.00 39.40 742.83 40.00",
+    "Metal3 40.00 114.87 742.83 115.47",
+    "Metal3 39.40 40.00 40.00 114.87",
+    "Metal3 742.83 40.00 743.43 114.87",
+    "Metal2 40.00 114.87 742.83 115.47",
+    "Metal2 39.40 40.00 40.00 114.87",
+    "Metal2 742.83 40.00 743.43 114.87",
+    "Metal4 40.00 40.00 742.83 114.87",
+    "Metal5 40.00 40.00 742.83 114.87",
+    "TopMetal1 40.00 40.00 742.83 114.87",
+
+    "Metal3 860.00 39.40 1644.48 40.00",
+    "Metal3 860.00 104.36 1644.48 104.96",
+    "Metal3 859.40 40.00 860.00 104.36",
+    "Metal3 1644.48 40.00 1645.08 104.36",
+    "Metal2 860.00 104.36 1644.48 104.96",
+    "Metal2 859.40 40.00 860.00 104.36",
+    "Metal2 1644.48 40.00 1645.08 104.36",
+    "Metal4 860.00 40.00 1644.48 104.36",
+    "Metal5 860.00 40.00 1644.48 104.36",
+    "TopMetal1 860.00 40.00 1644.48 104.36",
+
+    "Metal3 40.00 599.40 824.48 600.00",
+    "Metal3 40.00 664.36 824.48 664.96",
+    "Metal3 39.40 600.00 40.00 664.36",
+    "Metal3 824.48 600.00 825.08 664.36",
+    "Metal2 40.00 664.36 824.48 664.96",
+    "Metal2 39.40 600.00 40.00 664.36",
+    "Metal2 824.48 600.00 825.08 664.36",
+    "Metal4 40.00 600.00 824.48 664.36",
+    "Metal5 40.00 600.00 824.48 664.36",
+    "TopMetal1 40.00 600.00 824.48 664.36"
+  ],
+
+  "//": "SRAM macro DRC/LVS settings",
+  "MAGIC_MACRO_STD_CELL_SOURCE": "PDK",
+  "MAGIC_EXT_ABSTRACT_CELLS": [
+    "RM_IHPSG13_2P_.*",
+    "RM_IHPSG13_1P_.*"
+  ],
 
   "//": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
   "//": "!!! DO NOT CHANGE ANYTHING BELOW THIS POINT !!!",

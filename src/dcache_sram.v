@@ -46,7 +46,7 @@ module dcache_sram #(
   localparam integer PACK_BITS = 8 * PACK_BYTES;
   localparam integer PAD_BITS = PACK_BITS - SUM_BITS;
   initial begin
-    if (NUM_LINES != 256) $fatal(1, "cache_sram_D$: NUM_LINES (%0d) must equal 256.", NUM_LINES);
+    if (NUM_LINES != 256 && NUM_LINES != 64) $fatal(1, "cache_sram_D$: NUM_LINES (%0d) must be 64 or 256.", NUM_LINES);
     if ((LINE_BYTES * 8) != DATA_WIDTH)
       $fatal(
           1,
@@ -57,16 +57,31 @@ module dcache_sram #(
   end
   reg  [NUM_LINES-1:0] valid_ff;
   wire [PACK_BITS-1:0] packed_out;
-  sram_sp_256x56 #(
-      .ASIC(ASIC)
-  ) u_mem (
-      .clk (clk),
-      .we  (we),
-      .re  (re),
-      .addr(idx),
-      .din ({{PAD_BITS{1'b0}}, tag, wdata}),
-      .dout(packed_out)
-  );
+  generate
+    if (NUM_LINES == 64) begin : gen_sram64
+      sram_sp_64x56 #(
+          .ASIC(ASIC)
+      ) u_mem (
+          .clk (clk),
+          .we  (we),
+          .re  (re),
+          .addr(idx),
+          .din ({{PAD_BITS{1'b0}}, tag, wdata}),
+          .dout(packed_out)
+      );
+    end else begin : gen_sram256
+      sram_sp_256x56 #(
+          .ASIC(ASIC)
+      ) u_mem (
+          .clk (clk),
+          .we  (we),
+          .re  (re),
+          .addr(idx),
+          .din ({{PAD_BITS{1'b0}}, tag, wdata}),
+          .dout(packed_out)
+      );
+    end
+  endgenerate
   localparam DATA_LO = 0;
   localparam DATA_HI = DATA_LO + DATA_WIDTH - 1;
   localparam TAG_LO = DATA_HI + 1;

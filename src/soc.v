@@ -269,7 +269,8 @@ module soc #(
 
   cache #(
       .ASIC         (`ASIC),
-      .BYPASS_CACHES(`BYPASS_CACHES)
+      .BYPASS_CACHES(`BYPASS_CACHES),
+      .NUM_SETS     (`CACHE_NUM_SETS)
   ) cache_I (
       .clk           (clk),
       .resetn        (resetn_soc),

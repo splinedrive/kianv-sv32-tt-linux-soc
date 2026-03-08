@@ -127,7 +127,7 @@ module dcache #(
                          idx_raw;
 
   initial begin
-    if (NUM_LINES != 256) $fatal(1, "dcache: NUM_LINES (%0d) must equal 256.", NUM_LINES);
+    if (NUM_LINES != 256 && NUM_LINES != 64) $fatal(1, "dcache: NUM_LINES (%0d) must be 64 or 256.", NUM_LINES);
     if ((LINE_BYTES * 8) != DATA_WIDTH)
       $fatal(
           1, "dcache: LINE_BYTES*8 (%0d) must equal DATA_WIDTH (%0d).", LINE_BYTES * 8, DATA_WIDTH
