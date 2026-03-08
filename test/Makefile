@@ -7,8 +7,8 @@ FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = \
-	tt_um_kianv_sv32_soc.v \
-	soc.v \
+	RM_IHPSG13_1P_256x64_c2_bm_bist.v \
+  RM_IHPSG13_1P_core_behavioral_bm_bist.v \
 	cache.v \
 	clint.v \
 	dcache.v \
@@ -19,9 +19,12 @@ PROJECT_SOURCES = \
 	icache_sram.v \
 	kianv_smem.v \
 	rx_uart.v \
+	sg13g2_stdcell.v \
+	soc.v \
 	spi.v \
 	spi_nor_flash.v \
 	sram_sp_256x56.v \
+	tt_um_kianv_sv32_soc.v \
 	tx_uart.v \
 	kianv-sv32-tt/alu.v \
 	kianv-sv32-tt/alu_decoder.v \
@@ -77,7 +80,8 @@ COMPILE_ARGS 		+= -I$(SRC_DIR)
 COMPILE_ARGS 		+= -I$(SRC_DIR)/kianv-sv32-tt
 COMPILE_ARGS 		+= -DSIM
 COMPILE_ARGS 		+= -DSYSTEM_CLK=10000000
-COMPILE_ARGS 		+= -DASIC=0
+COMPILE_ARGS 		+= -DASIC=1
+COMPILE_ARGS 		+= -DFUNCTIONAL
 
 # Include the testbench sources:
 VERILOG_SOURCES += $(PWD)/spiflash.v
