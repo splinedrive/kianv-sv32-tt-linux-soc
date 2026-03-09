@@ -37,7 +37,7 @@
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
   "//": "SRAM macro integration: icache/dcache (1P_64x64)",
-  "MACROS": {
+  "MACROS_DISABLED": {
     "RM_IHPSG13_1P_64x64_c2_bm_bist": {
       "instances": {
         "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64": {
@@ -62,7 +62,7 @@
     }
   },
 
-  "PDN_MACRO_CONNECTIONS": [
+  "PDN_MACRO_CONNECTIONS_DISABLED": [
     "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
     "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
     "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
@@ -74,7 +74,7 @@
 
   "//": "Routing obstructions over SRAM cache footprints",
   "//": "Cache 1P_64x64: 784.48 x 64.36 µm at [860,40] and [40,600]",
-  "ROUTING_OBSTRUCTIONS": [
+  "ROUTING_OBSTRUCTIONS_DISABLED": [
     "Metal3 860.00 39.40 1644.48 40.00",
     "Metal3 860.00 104.36 1644.48 104.96",
     "Metal3 859.40 40.00 860.00 104.36",
