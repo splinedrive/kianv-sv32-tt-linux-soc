@@ -62,11 +62,7 @@ module soc #(
 
   wire clk = clk_osc;
 
-`ifdef SIM
-  localparam integer RST_CYCLES = 100;
-`else
-  localparam integer RST_CYCLES = 200_000;
-`endif
+  localparam integer RST_CYCLES = 200;
   localparam integer RSTW = $clog2(RST_CYCLES);
   reg  [RSTW-1:0] rst_cnt;
 
