@@ -93,6 +93,9 @@ jobs:
         run: |
           set -euxo pipefail
           cd test
+          cp tt_submission/*.v "${{ inputs.test-dir }}/gate_level_netlist.v"
+          cd "${{ inputs.test-dir }}"
+          rm -f tb.vcd tb.fst results.xml
           make clean
           make GATES=yes
           ! grep failure results.xml
