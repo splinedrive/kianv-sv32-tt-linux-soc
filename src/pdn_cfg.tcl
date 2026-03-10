@@ -76,6 +76,20 @@ define_pdn_grid \
     -starts_with POWER \
     -halo "$::env(PDN_HORIZONTAL_HALO) $::env(PDN_VERTICAL_HALO)"
 
+add_pdn_stripe \
+    -grid macro \
+    -layer Metal5 \
+    -width 2.81 \
+    -pitch 11.24 \
+    -offset 2.81 \
+    -spacing 2.81 \
+    -nets "$::env(VDD_NET) $::env(GND_NET)" \
+    -starts_with POWER
+
 add_pdn_connect \
     -grid macro \
-    -layers "Metal4 $::env(PDN_VERTICAL_LAYER)"
+    -layers "Metal4 Metal5"
+
+add_pdn_connect \
+    -grid macro \
+    -layers "Metal5 $::env(PDN_VERTICAL_LAYER)"

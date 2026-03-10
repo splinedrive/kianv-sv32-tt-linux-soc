@@ -485,6 +485,7 @@ module soc #(
     else access_fault_ready <= hit_access_fault_valid;
   end
 
+  (* keep_hierarchy *)
   kianv_harris_mc_edition #(
       .RESET_ADDR      (`RESET_ADDR),
       .NUM_ENTRIES_ITLB(`NUM_ENTRIES_ITLB),

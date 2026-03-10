@@ -41,11 +41,11 @@
     "RM_IHPSG13_1P_64x64_c2_bm_bist": {
       "instances": {
         "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [860, 40],
-          "orientation": "N"
+          "location": [860, 10],
+          "orientation": "S"
         },
         "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [40, 600],
+          "location": [860, 640],
           "orientation": "N"
         }
       },
@@ -118,5 +118,16 @@
   "MAGIC_DEF_LABELS": 0,
 
   "//": "Only export pin area in LEF (without any connected nets)",
-  "MAGIC_WRITE_LEF_PINONLY": 1
+  "MAGIC_WRITE_LEF_PINONLY": 1,
+  
+  "//": "Automatic clock gating",
+  "SYNTH_CLOCKGATE_MIN_WIDTH": 4,
+  "SYNTH_CLOCKGATE_POSEDGE_ICG": "sg13g2_lgcp_1/GATE/CLK/GCLK",
+  
+  "//": "Reduce macro halo",
+  "FP_MACRO_HORIZONTAL_HALO": 5,
+  "FP_MACRO_VERTICAL_HALO": 5,
+  
+  "//": "Could be triggered by keep hierarchy",
+  "ERROR_ON_UNMAPPED_CELLS": false
 }
