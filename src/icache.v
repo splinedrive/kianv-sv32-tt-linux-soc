@@ -97,7 +97,7 @@ module icache #(
                          idx_raw;
 
   initial begin
-    if (NUM_SETS != 256 && NUM_SETS != 64) $fatal(1, "icache: NUM_SETS (%0d) must be 64 or 256.", NUM_SETS);
+    if (NUM_SETS != 512 && NUM_SETS != 256 && NUM_SETS != 64) $fatal(1, "icache: NUM_SETS (%0d) must be 64, 256 or 512.", NUM_SETS);
     if ((LINE_BYTES * 8) != 32)
       $fatal(1, "icache: LINE_BYTES*8 (%0d) must equal DATA_WIDTH=32.", LINE_BYTES * 8);
     if (HASH_ON && HASH_MODE == 1) begin

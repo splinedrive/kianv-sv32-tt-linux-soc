@@ -13,7 +13,7 @@
 
   "//": "PL_TARGET_DENSITY_PCT - You can increase this if Global Placement fails with error GPL-0302.",
   "//": "Users have reported that values up to 80 worked well for them.",
-  "PL_TARGET_DENSITY_PCT": 50,
+  "PL_TARGET_DENSITY_PCT": 60,
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
   "//": "The value is in nanoseconds, so 20ns == 50MHz.",
@@ -36,37 +36,37 @@
 
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
-  "//": "SRAM macro integration: icache/dcache (1P_64x64)",
+    "//": "SRAM macro integration: icache/dcache (1P_256x64)",
   "MACROS": {
-    "RM_IHPSG13_1P_64x64_c2_bm_bist": {
+    "RM_IHPSG13_1P_256x64_c2_bm_bist": {
       "instances": {
-        "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [860, 10],
+        "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram256.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [900, 10],
           "orientation": "S"
         },
-        "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [860, 640],
+        "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram256.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [900, 580],
           "orientation": "N"
         }
       },
-      "gds": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist.gds"],
-      "lef": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist.lef"],
+      "gds": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"],
+      "lef": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"],
       "lib": {
-        "nom_*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_typ_1p20V_25C.lib"],
-        "min_*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_fast_1p32V_m55C.lib"],
-        "max_*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_slow_1p08V_125C.lib"],
-        "*": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist_typ_1p20V_25C.lib"]
+        "nom_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"],
+        "min_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"],
+        "max_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"],
+        "*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"]
       },
-      "nl": ["dir::./RM_IHPSG13_1P_64x64_c2_bm_bist.v"],
-      "spice": ["dir::../macro/RM_IHPSG13_1P_64x64_c2_bm_bist/RM_IHPSG13_1P_64x64_c2_bm_bist.cdl"]
+      "nl": ["dir::./RM_IHPSG13_1P_256x64_c2_bm_bist.v"],
+      "spice": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.cdl"]
     }
   },
 
   "PDN_MACRO_CONNECTIONS": [
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram64.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
   ],
 
   "//": "Custom PDN config: SRAM power pins on Metal4, connect Metal4 -> TopMetal1",
@@ -74,7 +74,7 @@
 
   "//": "SRAM macros have inherent DRC violations in Magic",
   "ERROR_ON_MAGIC_DRC": false,
-  
+
   "//": "SRAM macro LVS: abstract (black-box) SRAM cells during extraction",
   "MAGIC_EXT_ABSTRACT_CELLS": [
     "RM_IHPSG13_.*"
@@ -118,12 +118,11 @@
 
   "//": "Only export pin area in LEF (without any connected nets)",
   "MAGIC_WRITE_LEF_PINONLY": 1,
-  
-  
+
   "//": "Reduce macro halo",
   "FP_MACRO_HORIZONTAL_HALO": 5,
   "FP_MACRO_VERTICAL_HALO": 5,
-  
+
   "//": "Could be triggered by keep hierarchy",
   "ERROR_ON_UNMAPPED_CELLS": false
 }

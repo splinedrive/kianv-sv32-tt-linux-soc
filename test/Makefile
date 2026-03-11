@@ -35,6 +35,7 @@ TB_SOURCES += $(PWD)/tb.v
 # -----------------------------------------------------------------------------
 
 RTL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_256x64_c2_bm_bist.v
+RTL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_512x64_c2_bm_bist.v
 RTL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_64x64_c2_bm_bist.v
 RTL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_core_behavioral_bm_bist.v
 RTL_SOURCES += $(SRC_DIR)/cache.v
@@ -52,6 +53,7 @@ RTL_SOURCES += $(SRC_DIR)/soc.v
 RTL_SOURCES += $(SRC_DIR)/spi.v
 RTL_SOURCES += $(SRC_DIR)/spi_nor_flash.v
 RTL_SOURCES += $(SRC_DIR)/sram_sp_256x56.v
+RTL_SOURCES += $(SRC_DIR)/sram_sp_512x56.v
 RTL_SOURCES += $(SRC_DIR)/sram_sp_64x56.v
 RTL_SOURCES += $(SRC_DIR)/tt_um_kianv_sv32_soc.v
 
@@ -98,6 +100,7 @@ GL_SOURCES += $(PWD)/gate_level_netlist.v
 GL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_core_behavioral_bm_bist.v
 GL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_64x64_c2_bm_bist.v
 GL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_256x64_c2_bm_bist.v
+GL_SOURCES += $(SRC_DIR)/RM_IHPSG13_1P_512x64_c2_bm_bist.v
 
 # -----------------------------------------------------------------------------
 # Mode selection

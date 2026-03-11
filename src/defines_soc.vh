@@ -50,7 +50,7 @@
 `endif
 
 `ifndef CACHE_NUM_SETS
-`define CACHE_NUM_SETS 64
+`define CACHE_NUM_SETS 256
 `endif
 
 // ============================================================================
