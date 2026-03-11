@@ -31,7 +31,7 @@
 `define NUM_ENTRIES_ITLB 8
 `define NUM_ENTRIES_DTLB 8
 
-// `define ENABLE_M_EXT 1
+`define ENABLE_M_EXT 1
 
 
 // ============================================================================
@@ -50,7 +50,7 @@
 `endif
 
 `ifndef CACHE_NUM_SETS
-`define CACHE_NUM_SETS 256
+`define CACHE_NUM_SETS 512
 `endif
 
 // ============================================================================

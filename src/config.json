@@ -36,37 +36,37 @@
 
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
-    "//": "SRAM macro integration: icache/dcache (1P_256x64)",
+    "//": "SRAM macro integration: icache/dcache (1P_512x64)",
   "MACROS": {
-    "RM_IHPSG13_1P_256x64_c2_bm_bist": {
+    "RM_IHPSG13_1P_512x64_c2_bm_bist": {
       "instances": {
-        "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram256.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [900, 10],
+        "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram512.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [918, 10],
           "orientation": "S"
         },
-        "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram256.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [900, 580],
+        "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64": {
+          "location": [918, 512],
           "orientation": "N"
         }
       },
-      "gds": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.gds"],
-      "lef": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.lef"],
+      "gds": ["dir::../macro/RM_IHPSG13_1P_512x64_c2_bm_bist/RM_IHPSG13_1P_512x64_c2_bm_bist.gds"],
+      "lef": ["dir::../macro/RM_IHPSG13_1P_512x64_c2_bm_bist/RM_IHPSG13_1P_512x64_c2_bm_bist.lef"],
       "lib": {
-        "nom_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"],
-        "min_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_fast_1p32V_m55C.lib"],
-        "max_*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_slow_1p08V_125C.lib"],
-        "*": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist_typ_1p20V_25C.lib"]
+        "nom_*": ["dir::../macro/RM_IHPSG13_1P_512x64_c2_bm_bist/RM_IHPSG13_1P_512x64_c2_bm_bist_typ_1p20V_25C.lib"],
+        "min_*": ["dir::../macro/RM_IHPSG13_1P_512x64_c2_bm_bist/RM_IHPSG13_1P_512x64_c2_bm_bist_fast_1p32V_m55C.lib"],
+        "max_*": ["dir::../macro/RM_IHPSG13_1P_512x64_c2_bm_bist/RM_IHPSG13_1P_512x64_c2_bm_bist_slow_1p08V_125C.lib"],
+        "*": ["dir::../macro/RM_IHPSG13_1P_512x64_c2_bm_bist/RM_IHPSG13_1P_512x64_c2_bm_bist_typ_1p20V_25C.lib"]
       },
-      "nl": ["dir::./RM_IHPSG13_1P_256x64_c2_bm_bist.v"],
-      "spice": ["dir::../macro/RM_IHPSG13_1P_256x64_c2_bm_bist/RM_IHPSG13_1P_256x64_c2_bm_bist.cdl"]
+      "nl": ["dir::./RM_IHPSG13_1P_512x64_c2_bm_bist.v"],
+      "spice": ["dir::../macro/RM_IHPSG13_1P_512x64_c2_bm_bist/RM_IHPSG13_1P_512x64_c2_bm_bist.cdl"]
     }
   },
 
   "PDN_MACRO_CONNECTIONS": [
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
-    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram256.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram512.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram512.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
+    "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
   ],
 
   "//": "Custom PDN config: SRAM power pins on Metal4, connect Metal4 -> TopMetal1",
