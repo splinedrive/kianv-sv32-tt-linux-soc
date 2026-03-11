@@ -8,6 +8,7 @@
 .equ IO_BASE,        0x10000000
 .equ DIV_ADDR0,      0x1000000c   /* HI: SPI0 div, LO: UART div */
 .equ DIV_ADDR1,      0x10000010   /* HI: SPI1 div, LO: CLINT div */
+.equ CPU_FREQ_REG,   0x10000014
 
 .equ FREQ,           10000000
 .equ BAUDRATE,       115200
@@ -23,6 +24,13 @@
 .type _start, @function
 
 _start:
+   li   t0, CPU_FREQ_REG
+    lw   t1, 0(t0)
+    li   t2, 0xffff0000
+    and  t1, t1, t2
+    li   t2, 2560
+    or   t1, t1, t2
+    sw   t1, 0(t0)
     /* DIV_ADDR0: HI = SPI0, LO = UART */
     li t0, DIV_ADDR0
     li t1, DIV_ADDR0_VAL
