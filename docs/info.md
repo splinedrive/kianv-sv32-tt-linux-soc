@@ -1,8 +1,7 @@
 ## How it works
-
-32-bit RISC-V IMA processor with SV32 MMU and hardware caches (icache + dcache), capable of booting Linux with virtual memory support. Features 32 MiB of external QSPI PSRAM (4 x 8 MiB banks), 16 MiB of external SPI NOR flash, a UART peripheral, an SPI peripheral, and GPIO.
-
-The SV32 MMU provides two-level page table translation with separate instruction and data TLBs (8 entries each). The cache hierarchy uses 64-set direct-mapped icache and dcache backed by IHP SG13G2 SRAM macros.
+This design integrates a **KianV RV32IMA RISC-V processor** with an SV32 MMU and hardware caches (icache + dcache). The system is capable of booting **Linux, µLinux (uClinux), and xv6**, providing a compact Linux-capable SoC platform.
+The processor supports virtual memory through the SV32 MMU with two-level page table translation and separate instruction and data TLBs (8 entries each). The cache hierarchy uses a 512-set direct-mapped icache and dcache backed by IHP SG13G2 SRAM macros.
+The SoC includes **32 MiB of external QSPI PSRAM (4 × 8 MiB banks)**, **16 MiB of external SPI NOR flash**, and memory-mapped peripherals such as **UART, SPI, and GPIO**.
 
 ## System Memory Map
 
