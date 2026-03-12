@@ -27,6 +27,9 @@ jobs:
     steps:
       - name: Run Tiny Tapeout Precheck
         uses: TinyTapeout/tt-gds-action/precheck@ttihp26a
+        with:
+          tools-repo: urish/tt-support-tools
+          tools-ref: ihp-8x4
 
   gl_test:
     needs: gds
