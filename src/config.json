@@ -40,11 +40,11 @@
     "RM_IHPSG13_1P_512x64_c2_bm_bist": {
       "instances": {
         "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram512.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [918, 10],
+          "location": [938, 10],
           "orientation": "S"
         },
         "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [918, 512],
+          "location": [938, 512],
           "orientation": "N"
         }
       },
@@ -66,11 +66,6 @@
     "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram512.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!",
     "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDD! VSS!",
     "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64 VPWR VGND VDDARRAY! VSS!"
-  ],
-
-  "PL_SOFT_OBSTRUCTIONS": [
-  [1712, 0, 1724.16, 220],
-  [1712, 490, 1724.16, 710.64]
   ],
 
   "//": "Custom PDN config: SRAM power pins on Metal4, connect Metal4 -> TopMetal1",
