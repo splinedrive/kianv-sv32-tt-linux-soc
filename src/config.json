@@ -40,11 +40,11 @@
     "RM_IHPSG13_1P_512x64_c2_bm_bist": {
       "instances": {
         "soc_I.cache_I.gen_cached.icache_I.cache_I.gen_sram512.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [938, 10],
+          "location": [938, 2],
           "orientation": "S"
         },
         "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [938, 512],
+          "location": [938, 518],
           "orientation": "N"
         }
       },
