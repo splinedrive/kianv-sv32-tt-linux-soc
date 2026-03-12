@@ -13,7 +13,8 @@
 
   "//": "PL_TARGET_DENSITY_PCT - You can increase this if Global Placement fails with error GPL-0302.",
   "//": "Users have reported that values up to 80 worked well for them.",
-  "PL_TARGET_DENSITY_PCT": 60,
+  "PL_TARGET_DENSITY_PCT": 55,
+  "SYNTH_STRATEGY": "AREA 3",
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
   "//": "The value is in nanoseconds, so 20ns == 50MHz.",
@@ -44,7 +45,7 @@
           "orientation": "S"
         },
         "soc_I.cache_I.gen_cached.dcache_I.cache_D.gen_sram512.u_mem.gen_ihp_sg13.u_sram64": {
-          "location": [938, 518],
+          "location": [938, 517],
           "orientation": "N"
         }
       },
