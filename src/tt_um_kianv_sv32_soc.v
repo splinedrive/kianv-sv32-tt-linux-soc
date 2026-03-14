@@ -31,16 +31,8 @@ module tt_um_kianv_sv32_soc (
     input  wire       rst_n
 );
 
-  wire       reserved0 = ui_in[0];
-  wire       gpio0_in = ui_in[1];
   wire       spi_miso = ui_in[2];
-  wire       reserved3 = ui_in[3];
-  wire       reserved4 = ui_in[4];
-  wire       reserved5 = ui_in[5];
-  wire       reserved6 = ui_in[6];
   wire       uart_rx = ui_in[7];
-
-  wire       gpio_in = gpio0_in;
 
   wire       uart_tx;
   wire       gpio_out;
@@ -127,12 +119,12 @@ module tt_um_kianv_sv32_soc (
       .spi_sio1_so_miso0(spi_miso),
       .spi_sio0_si_mosi0(spi_mosi0),
 
-      .gpio_in (gpio_in),
+      .gpio_in (ui_in),
       .gpio_out(gpio_out),
       .gpio_oe (gpio_oe)
   );
 
-  wire _unused = &{1'b0, reserved0, reserved3, reserved4, reserved5, reserved6, ena, gpio_oe};
+  wire _unused = &{1'b0, ena, gpio_oe};
 
 endmodule
 /* verilator lint_on UNUSEDSIGNAL */

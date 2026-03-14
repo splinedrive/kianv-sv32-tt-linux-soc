@@ -30,7 +30,7 @@ module gpio (
     input  wire        valid,
     output reg         ready,
 
-    input  wire in,
+    input  wire [7:0] in,
     output wire out,
     output wire oe
 );
@@ -63,7 +63,7 @@ module gpio (
         end
 
         4'h8: begin
-          if (!wr) rdata <= {31'b0, in};
+          if (!wr) rdata <= {24'b0, in};
         end
 
         default: rdata <= 32'b0;

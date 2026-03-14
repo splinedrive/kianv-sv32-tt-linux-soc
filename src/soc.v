@@ -55,7 +55,7 @@ module soc #(
     input  wire spi_sio1_so_miso0,
     output wire spi_sio0_si_mosi0,
 
-    input  wire gpio_in,
+    input  wire [7:0] gpio_in,
     output wire gpio_out,
     output wire gpio_oe
 );
@@ -835,7 +835,7 @@ module gpio_if #(
     output wire [31:0] bus_rdata_o,
     output wire        bus_ready_o,
     output wire        gpio_oe,
-    input  wire        gpio_in,
+    input  wire  [7:0] gpio_in,
     output wire        gpio_out
 );
   wire hit = bus_valid_i &&
