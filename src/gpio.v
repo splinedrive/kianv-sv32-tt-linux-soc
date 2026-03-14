@@ -54,12 +54,12 @@ module gpio (
       case (addr)
         4'h0: begin
           if (wr) out_en <= wdata[9];
-          else rdata <= {31'b0, out_en};
+          else rdata <= {22'b0, out_en, 9'b0};
         end
 
         4'h4: begin
           if (wr) out_val <= wdata[9];
-          else rdata <= {31'b0, out_val};
+          else rdata <= {22'b0, out_val, 9'b0};
         end
 
         4'h8: begin
