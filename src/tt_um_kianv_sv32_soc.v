@@ -31,20 +31,12 @@ module tt_um_kianv_sv32_soc (
     input  wire       rst_n
 );
 
-  wire       reserved0 = ui_in[0];
-  wire       gpio0_in = ui_in[1];
   wire       spi_miso = ui_in[2];
-  wire       reserved3 = ui_in[3];
-  wire       reserved4 = ui_in[4];
-  wire       reserved5 = ui_in[5];
-  wire       reserved6 = ui_in[6];
   wire       uart_rx = ui_in[7];
 
-  wire       gpio_in = gpio0_in;
-
   wire       uart_tx;
-  wire       gpio_out;
-  wire       gpio_oe;
+  wire [7:0] gpio_out;
+  wire [7:0] gpio_oe;
 
   wire [3:0] spi_cen;
   wire       spi_sclk0;
@@ -86,14 +78,14 @@ module tt_um_kianv_sv32_soc (
   assign uio_oe[6] = 1'b1;
   assign uio_oe[7] = 1'b1;
 
-  assign uo_out[0] = uart_tx;
-  assign uo_out[1] = gpio_out;
-  assign uo_out[2] = spi_cen[1];
+  assign uo_out[0] = gpio_oe[0] ? gpio_out[0] : uart_tx;
+  assign uo_out[1] = gpio_oe[1] ? gpio_out[1] : 1'b0;
+  assign uo_out[2] = gpio_oe[2] ? gpio_out[2] : spi_cen[1];
   assign uo_out[3] = spi_mosi0;
-  assign uo_out[4] = spi_cen[0];
+  assign uo_out[4] = gpio_oe[4] ? gpio_out[4] : spi_cen[0];
   assign uo_out[5] = spi_sclk0;
   assign uo_out[6] = spi_cen[2];
-  assign uo_out[7] = spi_cen[3];
+  assign uo_out[7] = gpio_oe[7] ? gpio_out[7] : spi_cen[3];
 
   wire resetn_core = rst_n;
 
@@ -127,12 +119,13 @@ module tt_um_kianv_sv32_soc (
       .spi_sio1_so_miso0(spi_miso),
       .spi_sio0_si_mosi0(spi_mosi0),
 
-      .gpio_in (gpio_in),
+      .gpio_in (ui_in),
       .gpio_out(gpio_out),
       .gpio_oe (gpio_oe)
   );
 
-  wire _unused = &{1'b0, reserved0, reserved3, reserved4, reserved5, reserved6, ena, gpio_oe};
+  wire _unused = &{1'b0, ena, gpio_oe[6], gpio_oe[5], gpio_oe[3],
+                         gpio_out[6], gpio_out[5], gpio_out[3]};
 
 endmodule
 /* verilator lint_on UNUSEDSIGNAL */

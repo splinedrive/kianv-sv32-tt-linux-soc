@@ -30,13 +30,13 @@ module gpio (
     input  wire        valid,
     output reg         ready,
 
-    input  wire in,
-    output wire out,
-    output wire oe
+    input  wire [7:0] in,
+    output wire [7:0] out,
+    output wire [7:0] oe
 );
 
-  reg out_en;
-  reg out_val;
+  reg [7:0] out_en;
+  reg [7:0] out_val;
 
   assign out = out_val;
   assign oe  = out_en;
@@ -47,23 +47,23 @@ module gpio (
 
   always @(posedge clk) begin
     if (!resetn) begin
-      out_en  <= 1'b0;
-      out_val <= 1'b0;
+      out_en  <= 8'b0;
+      out_val <= 8'b0;
       rdata   <= 32'b0;
     end else if (valid) begin
       case (addr)
         4'h0: begin
-          if (wr) out_en <= wdata[9];
-          else rdata <= {31'b0, out_en};
+          if (wr) out_en <= wdata[15:8];
+          else rdata <= {16'b0, out_en, 8'b0};
         end
 
         4'h4: begin
-          if (wr) out_val <= wdata[9];
-          else rdata <= {31'b0, out_val};
+          if (wr) out_val <= wdata[15:8];
+          else rdata <= {16'b0, out_val, 8'b0};
         end
 
         4'h8: begin
-          if (!wr) rdata <= {31'b0, in};
+          if (!wr) rdata <= {24'b0, in};
         end
 
         default: rdata <= 32'b0;

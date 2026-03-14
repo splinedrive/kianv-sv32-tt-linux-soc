@@ -68,23 +68,23 @@ project:
 # Pinout for docs/website. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: "GPIO0 IN"
+  ui[0]: "GPIO IN 0"
+  ui[1]: "GPIO IN 1"
   ui[2]: "SPI MISO"
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
+  ui[3]: "GPIO IN 3"
+  ui[4]: "GPIO IN 4"
+  ui[5]: "GPIO IN 5"
+  ui[6]: "GPIO IN 6"
   ui[7]: "UART RX"
 
   # Outputs
   uo[0]: "UART TX"
-  uo[1]: "GPIO0 OUT"
+  uo[1]: "GPIO OUT 1"
   uo[2]: "SPI CS1"
   uo[3]: "SPI MOSI"
   uo[4]: "SPI CS0"
   uo[5]: "SPI SCLK"
-  uo[6]: "SPI CS2"
+  uo[6]: "SPI CS2 (NOR flash)"
   uo[7]: "SPI CS3"
 
   # Bidirectional pins

@@ -39,11 +39,38 @@ The system boots from SPI NOR flash. After reset, the CPU starts executing code 
 
 ### GPIO Peripheral registers
 
-| Address    | Name       | Description                  |
-| ---------- | ---------- | ---------------------------- |
-| 0x10000700 | GPIO_DIR   | Direction (output enable)    |
-| 0x10000704 | GPIO_OUT   | Write to output pins         |
-| 0x10000708 | GPIO_IN    | Read from input pins         |
+| Address    | Name     | Description                                   |
+| ---------- | -------- | --------------------------------------------- |
+| 0x10000700 | GPIO_OE  | Output enable (bits [15:8] for uo_out [7:0])  |
+| 0x10000704 | GPIO_OUT | Output value (bits [15:8] for uo_out [7:0])   |
+| 0x10000708 | GPIO_IN  | Input value (bits [7:0] from ui_in [7:0])     |
+
+Input pins (`ui_in`) occupy bits [7:0], output pins (`uo_out`) occupy bits [15:8]. These are physically separate pins, mapped at separate bit positions so there is no overlap. This gives 16 GPIO pins total (0-7 input, 8-15 output).
+
+**Bits [7:0]: inputs** (always readable via GPIO_IN)
+
+| Pin      | Bit | Also used by |
+| -------- | --- | ------------ |
+| ui_in[0] | 0   |              |
+| ui_in[1] | 1   |              |
+| ui_in[2] | 2   | SPI MISO     |
+| ui_in[3] | 3   |              |
+| ui_in[4] | 4   |              |
+| ui_in[5] | 5   |              |
+| ui_in[6] | 6   |              |
+| ui_in[7] | 7   | UART RX      |
+
+**Bits [15:8]: outputs** (GPIO_OE switches uo_out from peripheral to GPIO_OUT)
+
+| Pin       | Bit | OE=0 (default) | OE=1       |
+| --------- | --- | -------------- | ---------- |
+| uo_out[0] | 8   | UART TX        | GPIO OUT 0 |
+| uo_out[1] | 9   | low            | GPIO OUT 1 |
+| uo_out[2] | 10  | SPI CS1        | GPIO OUT 2 |
+| uo_out[4] | 12  | SPI CS0        | GPIO OUT 4 |
+| uo_out[7] | 15  | SPI CS3        | GPIO OUT 7 |
+
+Bits 11 (SPI MOSI), 13 (SPI SCLK), 14 (SPI CS2/NOR flash) are not muxable and always driven by their peripheral.
 
 ### QSPI PSRAM Control register
 

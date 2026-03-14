@@ -55,9 +55,9 @@ module soc #(
     input  wire spi_sio1_so_miso0,
     output wire spi_sio0_si_mosi0,
 
-    input  wire gpio_in,
-    output wire gpio_out,
-    output wire gpio_oe
+    input  wire [7:0] gpio_in,
+    output wire [7:0] gpio_out,
+    output wire [7:0] gpio_oe
 );
 
   wire clk = clk_osc;
@@ -834,9 +834,9 @@ module gpio_if #(
     input  wire [31:0] bus_wdata_i,
     output wire [31:0] bus_rdata_o,
     output wire        bus_ready_o,
-    output wire        gpio_oe,
-    input  wire        gpio_in,
-    output wire        gpio_out
+    output wire  [7:0] gpio_oe,
+    input  wire  [7:0] gpio_in,
+    output wire  [7:0] gpio_out
 );
   wire hit = bus_valid_i &&
             ((bus_addr_i == DIR_ADDR) || (bus_addr_i == OUT_ADDR) || (bus_addr_i == IN_ADDR));
